@@ -3,23 +3,36 @@
     <h2>Mūsų paslaugos</h2>
     <div class="services-list">
       <div class="service" :style="{ backgroundImage: `url(${images.battery})` }">
-        <h3>Baterijos Tvarkymas</h3>
+        <h3>Baterijų paketo diagnostika ir restauracija</h3>
       </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.consultation})` }">
-        <h3>Konsultacijos</h3>
+      <div class="service" :style="{ backgroundImage: `url(${images.Diagnostic})` }">
+        <h3>Diagnostika</h3>
       </div>
       <div class="service" :style="{ backgroundImage: `url(${images.technical})` }">
-        <h3>Techninis įgyvendinimas</h3>
+        <h3>Programavimo paslaugos</h3>
       </div>
       <div class="service" :style="{ backgroundImage: `url(${images.support})` }">
-        <h3>Priežiūra ir palaikymas</h3>
+        <h3>Elektrinės pavaros diagnostika ir restauracija</h3>
+      </div>
+      <div class="service" :style="{ backgroundImage: `url(${images.support})` }">
+        <h3>Krovimo sistemos diagnostika ir remontas</h3>
+      </div>
+      <div class="service" :style="{ backgroundImage: `url(${images.support})` }">
+        <h3>Pritaikymo Europos standartams darbai</h3>
+      </div>
+      <div class="service" :style="{ backgroundImage: `url(${images.support})` }">
+        <h3>Elektronikos atstatymo darbai po autoįvykio</h3>
+      </div>
+      <div class="service" :style="{ backgroundImage: `url(${images.support})` }">
+        <h3>Šildymo sistemos diagnostika ir remontas</h3>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import BatteryImage from '../assets/Battery.jpg'
+import BatteryImage from '../assets/paslaugos/Battery.jpg'
+import DiagnosticImage from '../assets/paslaugos/diagnostika.jpg'
 
 
 export default {
@@ -28,6 +41,7 @@ export default {
     return {
       images: {
         battery: BatteryImage,
+        Diagnostic: DiagnosticImage,
       }
     }
   }
@@ -36,70 +50,90 @@ export default {
 
 <style scoped>
 .services {
-  padding: 60px 20px;
-  background: #fff;
+  padding: 70px 20px;
+  background: #000000;
+  box-shadow: 0 2px 8px rgba(160, 6, 6, 0.76);
   text-align: center;
 }
 
 .services h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #2c3e50;
+  font-size: 2.6rem;
+  margin-bottom: 42px;
+  color: #42b983;
+  font-weight: 700;
 }
 
 .services-list {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* sklandus slinkimas iOS */
-  scroll-snap-type: x mandatory; /* kad būtų snap'as kortelėms */
-  padding-bottom: 8px;
+  scroll-snap-type: x mandatory;
+  padding: 0 20px 12px;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
 }
 
 .service {
   position: relative;
-  flex: 0 0 280px; /* fiksuotas plotis, neslepiam kortelės */
-  height: 180px;
+  flex: 0 0 220px; /* sumažintas plotis */
+  height: 140px;
   background-size: cover;
   background-position: center;
-  border-radius: 12px;
-  color: white;
+  border-radius: 15px;
+  color: #fff;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  padding: 16px;
   display: flex;
   align-items: flex-end;
-  padding: 16px;
-  background-blend-mode: multiply;
-  background-color: rgba(0,0,0,0.3);
-
-  scroll-snap-align: start; /* snap point */
+  justify-content: center;
+  text-align: center;
+  scroll-snap-align: start;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
 }
 
 .service:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 8px 24px rgba(66, 185, 131, 0.15);
+  transform: scale(1.04);
+  box-shadow: 0 10px 28px rgba(66, 185, 131, 0.2);
 }
 
 .service h3 {
-  position: relative;
-  margin: 0 auto 10px auto;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  margin: 0;
+  font-size: 1.25rem;
   font-weight: 600;
-  font-size: 1.3rem;
+  line-height: 1.4;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  max-width: 240px;
 }
 
 @media (min-width: 901px) {
-  /* desktop – parodyti įprastai, keli stulpeliai */
   .services-list {
-    flex-wrap: wrap;
-    overflow-x: visible;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    overflow: visible;
     scroll-snap-type: none;
+    padding: 0;
   }
 
   .service {
-    flex: 1 1 280px;
-    max-width: 280px;
+    flex: unset;
+    width: 100%;
+    height: 220px;
   }
 }
+
+@media (max-width: 600px) {
+  .service h3 {
+    font-size: 1.1rem;
+  }
+
+  .service {
+    height: 180px;
+  }
+}
+
 </style>

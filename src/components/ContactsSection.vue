@@ -42,32 +42,46 @@ export default {
 <style scoped>
 .contacts {
   padding: 60px 20px;
-  background: #f9f9f9;
+  background: linear-gradient(to right, #0f0f0f, #1a1a1a);
+  box-shadow: 0 2px 12px rgba(160, 6, 6, 0.7);
   text-align: center;
+  color: #eee;
 }
 
 h2 {
-  font-size: 2.5rem;
-  margin-bottom: 24px;
-  color: #2c3e50;
+  font-size: 2.6rem;
+  margin-bottom: 30px;
+  color: #42b983;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  max-width: 460px;
-  margin: 0 auto 30px auto;
+  gap: 16px;
+  max-width: 480px;
+  margin: 0 auto 40px auto;
 }
 
 .contact-form input,
 .contact-form textarea {
-  padding: 12px 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  background: #ffffff;
+  padding: 14px 16px;
+  border: 2px solid transparent;
+  border-radius: 10px;
   font-size: 1rem;
   font-family: inherit;
   resize: vertical;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #42b983;
+  box-shadow: 0 0 0 3px rgba(66, 185, 131, 0.2);
 }
 
 .contact-form button {
@@ -75,27 +89,29 @@ h2 {
   color: #fff;
   border: none;
   padding: 14px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1.1rem;
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .contact-form button:hover {
   background: #369870;
+  transform: translateY(-2px);
 }
 
 .contact-info {
-  font-size: 1.1rem;
-  color: #444;
-  margin-bottom: 24px;
+  font-size: 1.15rem;
+  color: #ddd;
+  margin-bottom: 32px;
   line-height: 1.8;
 }
 
 .contact-info a {
   color: #42b983;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .contact-info a:hover {
@@ -103,25 +119,26 @@ h2 {
 }
 
 .map {
-  margin-top: 20px;
+  margin-top: 30px;
   border-radius: 12px;
   overflow: hidden;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 .map iframe {
-  border: 0;
   width: 100%;
   height: 300px;
+  border: 0;
 }
 
 .map small {
   display: block;
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: 0.9rem;
-  color: #888;
+  color: #aaa;
 }
+
 </style>
