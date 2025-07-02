@@ -1,15 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <NavigationBar />
+  <HeroSection />
+  <ServicesSection />
+  <GallerySection />
+  <TestimonialsSection />
+  <SponsorsSection />
+  <AboutSection />
+  <ContactsSection />  
+  <FooterSection />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeroSection from './components/HeroSection.vue'
+import AboutSection from './components/AboutSection.vue'
+import ServicesSection from './components/ServicesSection.vue'
+import GallerySection from './components/GallerySection.vue'
+import TestimonialsSection from './components/TestimonialsSection.vue'
+import SponsorsSection from './components/SponsorsSection.vue'
+import ContactsSection from './components/ContactsSection.vue'
+import FooterSection from './components/FooterSection.vue'
+import NavigationBar from './components/NavigationBar.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HeroSection,
+    ServicesSection,
+    GallerySection,
+    TestimonialsSection,
+    AboutSection,
+    SponsorsSection,
+    ContactsSection,
+    FooterSection,
+    NavigationBar
   }
 }
 </script>
