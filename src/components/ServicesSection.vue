@@ -8,22 +8,22 @@
       <div class="service" :style="{ backgroundImage: `url(${images.Diagnostic})` }">
         <h3>Diagnostika</h3>
       </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.technical})` }">
+      <div class="service" :style="{ backgroundImage: `url(${images.Programing})` }">
         <h3>Programavimo paslaugos</h3>
       </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.support})` }">
+      <div class="service" :style="{ backgroundImage: `url(${images.Emotor})` }">
         <h3>Elektrinės pavaros diagnostika ir restauracija</h3>
       </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.support})` }">
+      <div class="service" :style="{ backgroundImage: `url(${images.Charger})` }">
         <h3>Krovimo sistemos diagnostika ir remontas</h3>
       </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.support})` }">
+      <div class="service" :style="{ backgroundImage: `url(${images.Eu})` }">
         <h3>Pritaikymo Europos standartams darbai</h3>
       </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.support})` }">
+      <div class="service" :style="{ backgroundImage: `url(${images.Atstatymas})` }">
         <h3>Elektronikos atstatymo darbai po autoįvykio</h3>
       </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.support})` }">
+      <div class="service" :style="{ backgroundImage: `url(${images.Sildymas})` }">
         <h3>Šildymo sistemos diagnostika ir remontas</h3>
       </div>
     </div>
@@ -33,7 +33,12 @@
 <script>
 import BatteryImage from '../assets/paslaugos/Battery.jpg'
 import DiagnosticImage from '../assets/paslaugos/diagnostika.jpg'
-
+import Programing from '../assets/paslaugos/Programavimo.jpg'
+import Emotor from '../assets/paslaugos/Emotor.jpg'
+import Charger from '../assets/paslaugos/charger.jpg'
+import Eu from '../assets/paslaugos/eu.jpg'
+import Atstatymas from '../assets/paslaugos/crash.jpg'
+import Sildymas from '../assets/paslaugos/sildymo.jpg'
 
 export default {
   name: 'ServicesSection',
@@ -42,6 +47,12 @@ export default {
       images: {
         battery: BatteryImage,
         Diagnostic: DiagnosticImage,
+        Programing: Programing,
+        Emotor: Emotor,
+        Charger: Charger,
+        Eu: Eu,
+        Atstatymas: Atstatymas,
+        Sildymas: Sildymas,
       }
     }
   }
