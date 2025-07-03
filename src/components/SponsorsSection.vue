@@ -84,7 +84,7 @@ export default {
 }
 
 /* Responsive: stacked layout on mobile */
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   .sponsors-list {
     flex-direction: column;
     gap: 20px;
