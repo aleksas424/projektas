@@ -2,59 +2,29 @@
   <section class="services" id="services">
     <h2>Mūsų paslaugos</h2>
     <div class="services-list">
-      <div class="service" :style="{ backgroundImage: `url(${images.battery})` }">
-        <h3>Baterijų paketo diagnostika ir restauracija</h3>
-      </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.Diagnostic})` }">
-        <h3>Diagnostika</h3>
-      </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.Programing})` }">
-        <h3>Programavimo paslaugos</h3>
-      </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.Emotor})` }">
-        <h3>Elektrinės pavaros diagnostika ir restauracija</h3>
-      </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.Charger})` }">
-        <h3>Krovimo sistemos diagnostika ir remontas</h3>
-      </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.Eu})` }">
-        <h3>Pritaikymo Europos standartams darbai</h3>
-      </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.Atstatymas})` }">
-        <h3>Elektronikos atstatymo darbai po autoįvykio</h3>
-      </div>
-      <div class="service" :style="{ backgroundImage: `url(${images.Sildymas})` }">
-        <h3>Šildymo sistemos diagnostika ir remontas</h3>
+      <div class="service" v-for="(service, idx) in services" :key="idx" :style="{ backgroundImage: `url(${service.image})` }">
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.desc }}</p>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import BatteryImage from '../assets/paslaugos/Battery.jpg'
-import DiagnosticImage from '../assets/paslaugos/diagnostika.jpg'
-import Programing from '../assets/paslaugos/Programavimo.jpg'
-import Emotor from '../assets/paslaugos/Emotor.jpg'
-import Charger from '../assets/paslaugos/charger.jpg'
-import Eu from '../assets/paslaugos/eu.jpg'
-import Atstatymas from '../assets/paslaugos/crash.jpg'
-import Sildymas from '../assets/paslaugos/sildymo.jpg'
+import axios from 'axios';
 
 export default {
   name: 'ServicesSection',
   data() {
     return {
-      images: {
-        battery: BatteryImage,
-        Diagnostic: DiagnosticImage,
-        Programing: Programing,
-        Emotor: Emotor,
-        Charger: Charger,
-        Eu: Eu,
-        Atstatymas: Atstatymas,
-        Sildymas: Sildymas,
-      }
+      services: []
     }
+  },
+  mounted() {
+    axios.get('http://localhost:3001/api/data')
+      .then(res => {
+        this.services = res.data.services || [];
+      });
   }
 }
 </script>

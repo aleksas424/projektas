@@ -34,6 +34,9 @@ export default {
       if (el) {
         el.scrollIntoView({ behavior: 'smooth' });
       }
+      if (this.isMenuOpen) {
+        this.isMenuOpen = false; // Uždaryti meniu po paspaudimo
+      }
     }
   }
 }
@@ -95,19 +98,19 @@ export default {
   }
 
   .nav-links {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 100%;
-  right: 24px;
-  background-color: rgba(0, 0, 0, 0.95); /* Tamsus, bet permatomas fonas */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Realistiškas šešėlis */
-  padding: 16px;
-  border-radius: 8px;
-  width: max-content;
-  backdrop-filter: blur(6px); /* stilingas efektas */
-  z-index: 15;
-}
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 24px;
+    background-color: rgba(0, 0, 0, 0.95); /* Tamsus, bet permatomas fonas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Realistiškas šešėlis */
+    padding: 16px;
+    border-radius: 8px;
+    width: max-content;
+    backdrop-filter: blur(6px); /* stilingas efektas */
+    z-index: 15;
+  }
 
   .nav-links.open {
     display: flex;

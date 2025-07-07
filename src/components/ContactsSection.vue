@@ -1,6 +1,11 @@
 <template>
   <section class="contacts" id="contacts">
-    <h2>Kontaktai</h2>
+    <div class="container">
+      <h2>Kontaktai</h2>
+      <p><strong>Adresas:</strong> {{ contacts.address }}</p>
+      <p><strong>Telefonas:</strong> {{ contacts.phone }}</p>
+      <p><strong>El. paštas:</strong> {{ contacts.email }}</p>
+    </div>
 
     <form class="contact-form" @submit.prevent>
       <input type="text" placeholder="Jūsų vardas" required />
@@ -34,8 +39,24 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
-  name: 'ContactsSection'
+  name: 'ContactsSection',
+  data() {
+    return {
+      contacts: {
+        address: '',
+        phone: '',
+        email: ''
+      }
+    }
+  },
+  mounted() {
+    axios.get('http://localhost:3001/api/data')
+      .then(res => {
+        this.contacts = res.data.contacts || this.contacts;
+      });
+  }
 }
 </script>
 

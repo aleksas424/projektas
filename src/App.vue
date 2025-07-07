@@ -1,13 +1,18 @@
 <template>
-  <NavigationBar />
-  <HeroSection />
-  <ServicesSection />
-  <GallerySection />
-  <TestimonialsSection />
-  <SponsorsSection />
-  <AboutSection />
-  <ContactsSection />  
-  <FooterSection />
+  <router-view v-slot="{ Component }">
+    <component :is="Component" v-if="$route.path.startsWith('/adminpanel') || $route.path.startsWith('/adminregister')" />
+    <div v-else>
+      <NavigationBar />
+      <HeroSection />
+      <ServicesSection />
+      <GallerySection />
+      <TestimonialsSection />
+      <SponsorsSection />
+      <AboutSection />
+      <ContactsSection />
+      <FooterSection />
+    </div>
+  </router-view>
 </template>
 
 <script>

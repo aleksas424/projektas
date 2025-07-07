@@ -6,7 +6,7 @@
       <button class="nav-btn left" @click="prev">&#8249;</button>
 
       <img 
-        :src="images[currentIndex]" 
+        :src="images[currentIndex]?.image" 
         :alt="`Projektas ${currentIndex + 1}`" 
         class="main-image"
       />
@@ -18,7 +18,7 @@
       <img 
         v-for="(img, index) in images" 
         :key="index" 
-        :src="img" 
+        :src="img.image" 
         :alt="`Projektas ${index + 1}`"
         :class="{ active: index === currentIndex }"
         @click="currentIndex = index"
@@ -28,20 +28,20 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'GallerySection',
   data() {
     return {
-      images: [
-        'https://picsum.photos/seed/1/800/500',
-        'https://picsum.photos/seed/2/800/500',
-        'https://picsum.photos/seed/3/800/500',
-        'https://picsum.photos/seed/4/800/500',
-        'https://picsum.photos/seed/5/800/500',
-        'https://picsum.photos/seed/6/800/500',
-      ],
+      images: [],
       currentIndex: 0,
     }
+  },
+  mounted() {
+    axios.get('http://localhost:3001/api/data')
+      .then(res => {
+        this.images = res.data.gallery || [];
+      });
   },
   methods: {
     prev() {

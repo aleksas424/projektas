@@ -1,32 +1,29 @@
 <template>
   <section class="testimonials" id="testimonials">
-    <h2>Atsiliepimai / Klientai</h2>
-    <transition name="fade" mode="out-in">
-      <div class="testimonial" :key="currentIndex">
-        <p>{{ testimonials[currentIndex].text }}</p>
-        <span>- {{ testimonials[currentIndex].author }}</span>
+    <h2>Atsiliepimai</h2>
+    <div class="testimonials-list">
+      <div class="testimonial" v-for="(t, idx) in testimonials" :key="idx">
+        <blockquote>{{ t.text }}</blockquote>
+        <p class="author">- {{ t.author }}</p>
       </div>
-    </transition>
+    </div>
   </section>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'TestimonialsSection',
   data() {
     return {
-      currentIndex: 0,
-      testimonials: [
-        { text: 'Puiki komanda, profesionalus požiūris!', author: 'Jonas, UAB Statyba' },
-        { text: 'Greitai ir kokybiškai atliko darbus.', author: 'Ona, MB Projektai' },
-        { text: 'Rekomenduoju visiems, kas ieško patikimų partnerių.', author: 'Petras, Individuali veikla' }
-      ]
+      testimonials: []
     }
   },
   mounted() {
-    setInterval(() => {
-      this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
-    }, 3000);
+    axios.get('http://localhost:3001/api/data')
+      .then(res => {
+        this.testimonials = res.data.testimonials || [];
+      });
   }
 }
 </script>

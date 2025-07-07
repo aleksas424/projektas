@@ -2,9 +2,8 @@
   <section class="about" id="about">
     <div class="container">
       <h2>Apie mus</h2>
-      <p class="intro">
-        Esame atsidavusi profesionalų komanda, siūlanti aukščiausio lygio paslaugas jūsų projektams. Turime ilgametę patirtį ir nuolat siekiame geriausių rezultatų kiekvienam klientui.
-      </p>
+      <p class="intro">{{ about.text }}</p>
+      <img v-if="about.image" :src="about.image" alt="Apie mus nuotrauka" style="max-width:300px; margin:20px auto; display:block;" />
       <div class="highlights">
         <div class="highlight-card">
           <i class="fas fa-cogs"></i>
@@ -27,9 +26,24 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "AboutSection",
-};
+  data() {
+    return {
+      about: {
+        text: '',
+        image: ''
+      }
+    }
+  },
+  mounted() {
+    axios.get('http://localhost:3001/api/data')
+      .then(res => {
+        this.about = res.data.about || this.about;
+      });
+  }
+}
 </script>
 
 <style scoped>

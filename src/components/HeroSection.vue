@@ -2,17 +2,38 @@
   <section class="hero" id="hero">
     <video autoplay muted loop playsinline class="hero-video">
       <source src="../assets/Video.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
     </video>
     <div class="hero-overlay"></div> <!-- pridėtas tamsus sluoksnis -->
     <div class="hero-content">
-      <img src="../assets/logo.jpg" alt="Įmonės logotipas" class="hero-logo" />
-      <h1 class="hero-title">Pagrindinis šūkis</h1>
-      <p class="hero-subtitle">Trumpas aprašymas arba antraštė po šūkiu.</p>
+      <img v-if="hero.image" :src="hero.image" alt="Įmonės logotipas" class="hero-logo" />
+      <h1 class="hero-title">{{ hero.title }}</h1>
+      <p class="hero-subtitle">{{ hero.subtitle }}</p>
       <button class="hero-cta" aria-label="Susisiekti su mumis">Susisiekti</button>
     </div>
   </section>
 </template>
+
+<script>
+import axios from 'axios';
+export default {
+  name: 'HeroSection',
+  data() {
+    return {
+      hero: {
+        title: '',
+        subtitle: '',
+        image: ''
+      }
+    }
+  },
+  mounted() {
+    axios.get('http://localhost:3001/api/data')
+      .then(res => {
+        this.hero = res.data.hero || this.hero;
+      });
+  }
+}
+</script>
 
 <style scoped>
 .hero {
@@ -36,8 +57,7 @@
   z-index: 0;
   transform: translate(-50%, -50%);
   object-fit: cover;
-  /* gali sumažinti brightness dar daugiau arba išvis pašalinti, jei naudojies overlay */
-  filter: brightness(0.7);
+  filter: brightness(0.7); /* gali sumažinti brightness dar daugiau arba išvis pašalinti, jei naudojies overlay */
 }
 
 /* Naujas tamsus sluoksnis virš video */

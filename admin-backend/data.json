@@ -1,0 +1,63 @@
+{
+  "hero": {
+    "title": "Sveiki atvykę!",
+    "subtitle": "Mūsų paslaugos geriausios!",
+    "image": "http://localhost:3001/uploads/1751923604453-photo_2025-07-07_14-26-26.jpg"
+  },
+  "about": {
+    "text": "Apie mus tekstas...",
+    "image": ""
+  },
+  "services": [
+    {
+      "title": "Paslauga 1",
+      "desc": "Aprašymas",
+      "image": ""
+    },
+    {
+      "title": "Paslauga 2",
+      "desc": "Aprašymas",
+      "image": ""
+    },
+    {
+      "title": "",
+      "desc": "",
+      "image": ""
+    }
+  ],
+  "gallery": [
+    {
+      "image": "http://localhost:3001/uploads/1751923370835-Screenshot 2025-05-02 030145.png"
+    },
+    {
+      "image": "http://localhost:3001/uploads/1751923633601-photo_2025-07-02_15-48-11.jpg"
+    },
+    {
+      "image": "http://localhost:3001/uploads/1751923641967-20250618_205015.jpg"
+    },
+    {
+      "image": "http://localhost:3001/uploads/1751923647970-20250623_151430.jpg"
+    }
+  ],
+  "contacts": {
+    "address": "Adresas...",
+    "phone": "+370...",
+    "email": "el.paštas@pavyzdys.lt"
+  },
+  "sponsors": [
+    {
+      "name": "Rėmėjas 1",
+      "image": ""
+    },
+    {
+      "name": "Rėmėjas 2",
+      "image": ""
+    }
+  ],
+  "testimonials": [
+    {
+      "author": "Jonas",
+      "text": "Labai patiko!"
+    }
+  ]
+}
