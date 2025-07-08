@@ -2,10 +2,12 @@
   <section class="testimonials" id="testimonials">
     <h2>Atsiliepimai</h2>
     <div class="testimonials-list">
-      <div class="testimonial" v-for="(t, idx) in testimonials" :key="idx">
-        <blockquote>{{ t.text }}</blockquote>
-        <p class="author">- {{ t.author }}</p>
-      </div>
+      <transition name="fade" mode="out-in">
+        <div class="testimonial" v-if="testimonials.length" :key="currentIndex">
+          <blockquote>{{ testimonials[currentIndex].text }}</blockquote>
+          <p class="author">- {{ testimonials[currentIndex].author }}</p>
+        </div>
+      </transition>
     </div>
   </section>
 </template>
@@ -16,14 +18,29 @@ export default {
   name: 'TestimonialsSection',
   data() {
     return {
-      testimonials: []
+      testimonials: [],
+      currentIndex: 0,
+      intervalId: null
     }
   },
   mounted() {
     axios.get('http://localhost:3001/api/data')
       .then(res => {
         this.testimonials = res.data.testimonials || [];
+        if (this.testimonials.length > 1) {
+          this.startRotation();
+        }
       });
+  },
+  beforeUnmount() {
+    if (this.intervalId) clearInterval(this.intervalId);
+  },
+  methods: {
+    startRotation() {
+      this.intervalId = setInterval(() => {
+        this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
+      }, 3000);
+    }
   }
 }
 </script>

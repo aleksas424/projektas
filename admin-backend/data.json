@@ -1,28 +1,23 @@
 {
   "hero": {
-    "title": "Sveiki atvykę!",
-    "subtitle": "Mūsų paslaugos geriausios!",
+    "title": "Elektromobilių ir hibridinių automobilių servisas",
+    "subtitle": "Pasirūpisime, kad jūsų trasnporto priemonė būtų visados pasiruošusi kelionėms ir išukiams",
     "image": "http://localhost:3001/uploads/1751923604453-photo_2025-07-07_14-26-26.jpg"
   },
   "about": {
-    "text": "Apie mus tekstas...",
+    "text": "EVERALT Solutions Tai ne tik naujas pavadinimas, bet ir aiškiai apibrėžtas tikslas. EVERALT Solutions atspindi pagrindinę misiją – teikti pažangius elektromobilių ir hibridinių automobilių (EV) eros (ERA) sprendimus, kurie ne tik keičia dabartį, bet ir kuria tvarią ateitį.\n\nSukaupta profesinė patirtis ir žinios leidžia mums, kaip elektrinių transporto priemonių meistram, pasirūpinti jūsų automobiliu ir užtikrinti, jog jis yra nuolat prižiūrėtas ir paruoštas iššūkiams.\n\nIki šiol pagrindinis serviso dėmesys buvo skiriamas TESLA elektromobiliams. Tačiau, nuo šiol padėsime bet kurio gamintojo elektromobiliams ir hibridiniams automobiliams.",
     "image": ""
   },
   "services": [
     {
-      "title": "Paslauga 1",
-      "desc": "Aprašymas",
-      "image": ""
-    },
-    {
-      "title": "Paslauga 2",
-      "desc": "Aprašymas",
-      "image": ""
-    },
-    {
-      "title": "",
+      "title": "Aukštos įtampos baterijų restauracija",
       "desc": "",
-      "image": ""
+      "image": "http://localhost:3001/uploads/1751926269753-20250623_151346.jpg"
+    },
+    {
+      "title": "Elektrinių pavarų restauracija",
+      "desc": "",
+      "image": "http://localhost:3001/uploads/1751946801223-20250623_150304.jpg"
     }
   ],
   "gallery": [
@@ -30,34 +25,37 @@
       "image": "http://localhost:3001/uploads/1751923370835-Screenshot 2025-05-02 030145.png"
     },
     {
-      "image": "http://localhost:3001/uploads/1751923633601-photo_2025-07-02_15-48-11.jpg"
+      "image": "http://localhost:3001/uploads/1751923633601-photo_2025-07-02_15-48-11.jpg",
+      "category_id": 2
     },
     {
-      "image": "http://localhost:3001/uploads/1751923641967-20250618_205015.jpg"
+      "image": "http://localhost:3001/uploads/1751923641967-20250618_205015.jpg",
+      "category_id": 1
     },
     {
-      "image": "http://localhost:3001/uploads/1751923647970-20250623_151430.jpg"
+      "image": "http://localhost:3001/uploads/1751923647970-20250623_151430.jpg",
+      "category_id": 1
     }
   ],
   "contacts": {
-    "address": "Adresas...",
-    "phone": "+370...",
-    "email": "el.paštas@pavyzdys.lt"
+    "address": "Daubos g. 1a, Šiauliai",
+    "phone": "+370 691 48300",
+    "email": "everaltsolutions@gmail.com"
   },
   "sponsors": [
     {
-      "name": "Rėmėjas 1",
-      "image": ""
-    },
-    {
-      "name": "Rėmėjas 2",
-      "image": ""
+      "name": "",
+      "image": "http://localhost:3001/uploads/1751926243397-Logo.jpg"
     }
   ],
   "testimonials": [
     {
-      "author": "Jonas",
+      "author": "Jonas 11",
       "text": "Labai patiko!"
+    },
+    {
+      "author": "jokubas",
+      "text": "o blec neblogai"
     }
   ]
 }

@@ -6,7 +6,7 @@
       <button class="nav-btn left" @click="prev">&#8249;</button>
 
       <img 
-        :src="images[currentIndex]?.image" 
+        :src="filteredImages[currentIndex]?.image" 
         :alt="`Projektas ${currentIndex + 1}`" 
         class="main-image"
       />
@@ -16,13 +16,23 @@
 
     <div class="gallery-thumbnails">
       <img 
-        v-for="(img, index) in images" 
+        v-for="(img, index) in filteredImages" 
         :key="index" 
         :src="img.image" 
         :alt="`Projektas ${index + 1}`"
         :class="{ active: index === currentIndex }"
         @click="currentIndex = index"
       />
+    </div>
+
+    <div class="gallery-categories">
+      <button 
+        v-for="cat in [{id: null, name: 'Visos'}, ...categories]" 
+        :key="cat.id ?? 'all'" 
+        :class="['gallery-category-btn', {active: selectedCategory === cat.id}]"
+        @click="selectCategory(cat.id)">
+        {{ cat.name }}
+      </button>
     </div>
   </section>
 </template>
@@ -34,7 +44,15 @@ export default {
   data() {
     return {
       images: [],
+      categories: [],
+      selectedCategory: null,
       currentIndex: 0,
+    }
+  },
+  computed: {
+    filteredImages() {
+      if (!this.selectedCategory) return this.images;
+      return this.images.filter(img => img.category_id === this.selectedCategory);
     }
   },
   mounted() {
@@ -42,14 +60,24 @@ export default {
       .then(res => {
         this.images = res.data.gallery || [];
       });
+    axios.get('http://localhost:3001/api/gallery-categories')
+      .then(res => {
+        this.categories = res.data;
+      });
   },
   methods: {
     prev() {
-      this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+      if (this.filteredImages.length === 0) return;
+      this.currentIndex = (this.currentIndex - 1 + this.filteredImages.length) % this.filteredImages.length;
     },
     next() {
-      this.currentIndex = (this.currentIndex + 1) % this.images.length;
+      if (this.filteredImages.length === 0) return;
+      this.currentIndex = (this.currentIndex + 1) % this.filteredImages.length;
     },
+    selectCategory(id) {
+      this.selectedCategory = id;
+      this.currentIndex = 0;
+    }
   }
 }
 </script>
@@ -154,4 +182,24 @@ export default {
   border-color: #42b983;
 }
 
+.gallery-categories {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.gallery-category-btn {
+  background: #fff;
+  color: #42b983;
+  border: 1px solid #42b983;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.gallery-category-btn.active, .gallery-category-btn:hover {
+  background: #42b983;
+  color: #fff;
+}
 </style>

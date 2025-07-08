@@ -1,7 +1,7 @@
 <template>
   <div>
     <AdminLogin v-if="!isLoggedIn" @login-success="onLogin" />
-    <AdminPanel v-else />
+    <AdminPanel v-else @logout="onLogout" />
   </div>
 </template>
 
@@ -20,6 +20,11 @@ export default {
   methods: {
     onLogin() {
       this.isLoggedIn = true;
+      this.$router.push('/adminpanel');
+    },
+    onLogout() {
+      this.isLoggedIn = false;
+      this.$router.push('/adminlogin');
     }
   }
 }

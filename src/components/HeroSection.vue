@@ -8,7 +8,7 @@
       <img v-if="hero.image" :src="hero.image" alt="Įmonės logotipas" class="hero-logo" />
       <h1 class="hero-title">{{ hero.title }}</h1>
       <p class="hero-subtitle">{{ hero.subtitle }}</p>
-      <button class="hero-cta" aria-label="Susisiekti su mumis">Susisiekti</button>
+      <button class="hero-cta" aria-label="Susisiekti su mumis">Registracija</button>
     </div>
   </section>
 </template>

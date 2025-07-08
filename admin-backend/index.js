@@ -98,6 +98,25 @@ app.post('/api/register', async (req, res) => {
   res.json({ success: true });
 });
 
+// --- Gallery categories API ---
+app.get('/api/gallery-categories', async (req, res) => {
+  const [rows] = await db.query('SELECT * FROM gallery_categories');
+  res.json(rows);
+});
+
+app.post('/api/gallery-categories', async (req, res) => {
+  const { name } = req.body;
+  if (!name) return res.status(400).json({ message: 'Trūksta pavadinimo' });
+  await db.query('INSERT INTO gallery_categories (name) VALUES (?)', [name]);
+  res.json({ success: true });
+});
+
+app.delete('/api/gallery-categories/:id', async (req, res) => {
+  const { id } = req.params;
+  await db.query('DELETE FROM gallery_categories WHERE id = ?', [id]);
+  res.json({ success: true });
+});
+
 // --- Paleidimas ---
 if (!fs.existsSync('uploads')) fs.mkdirSync('uploads');
 app.listen(PORT, () => {
